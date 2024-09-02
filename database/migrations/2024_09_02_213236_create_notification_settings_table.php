@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('notification_settings', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->id('setting_id');
+            $table->foreignId('user_id')->constrained('users')->references('user_id');
             $table->string('notification_type');
             $table->boolean('enabled');
             $table->timestamps();

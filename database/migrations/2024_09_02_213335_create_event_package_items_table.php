@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('event_package_items', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('package_id')->constrained('event_packages');
-            $table->enum('item_type', ['venue_rental', 'equipment', 'instructor', 'catering']);
-            $table->unsignedBigInteger('item_reference_id');
-            $table->integer('quantity');
+            $table->id('package_id');
+            $table->foreignId('owner_id')->constrained('venue_owners')->references('owner_id');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->decimal('base_price', 8, 2);
             $table->timestamps();
         });
     }

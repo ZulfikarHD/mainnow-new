@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('instructor_bookings', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('booking_id')->constrained('bookings');
-            $table->foreignId('instructor_id')->constrained('instructors');
-            $table->foreignId('user_id')->constrained('users');
+            $table->id('instructor_booking_id');
+            $table->foreignId('booking_id')->constrained('bookings')->references('booking_id');
+            $table->foreignId('instructor_id')->constrained('instructors')->references('isntructor_id');
+            $table->foreignId('user_id')->constrained('users')->references('user_id');
             $table->time('start_time');
             $table->time('end_time');
             $table->decimal('total_fee', 8, 2);

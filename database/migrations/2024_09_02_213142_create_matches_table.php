@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('matches', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('tournament_id')->constrained('tournaments');
-            $table->foreignId('team_a_id')->constrained('teams');
-            $table->foreignId('team_b_id')->constrained('teams');
+            $table->id('match_id');
+            $table->foreignId('tournament_id')->constrained('tournaments')->references('tournament_id');
+            $table->foreignId('team_a_id')->constrained('teams')->references('team_id');
+            $table->foreignId('team_b_id')->constrained('teams')->references('team_id');
             $table->date('match_date');
             $table->integer('score_team_a')->nullable();
             $table->integer('score_team_b')->nullable();

@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('venue_sports', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('venue_id')->constrained('venues');
-            $table->foreignId('sport_id')->constrained('sports');
+            $table->id('venue_sport_id');
+            $table->foreignId('venue_id')->constrained('venues')->references('venue_id');
+            $table->foreignId('sport_id')->constrained('sports')->references('sport_id');
             $table->decimal('price_per_hour', 8, 2);
             $table->enum('availability', ['daily', 'weekends']);
             $table->timestamps();

@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('notifications', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('owner_id')->constrained('venue_owners');
+            $table->id('notification_id');
+            $table->foreignId('user_id')->constrained('users')->references('user_id');
+            $table->foreignId('owner_id')->constrained('venue_owners')->references('owner_id');
             $table->text('message');
             $table->enum('read_status', ['read', 'unread']);
             $table->timestamps();

@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('equipment', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('venue_id')->constrained('venues');
+            $table->id('equipment_id');
+            $table->foreignId('venue_id')->constrained('venues')->references('venue_id');
             $table->string('name');
             $table->integer('quantity');
             $table->enum('status', ['available', 'in maintenance']);

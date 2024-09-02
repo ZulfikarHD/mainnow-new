@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('event_packages', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('owner_id')->constrained('venue_owners');
+        Schema::create('teams', function (Blueprint $table) {
+            $table->id('team_id');
             $table->string('name');
-            $table->text('description')->nullable();
-            $table->decimal('base_price', 8, 2);
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_packages');
+        Schema::dropIfExists('teams');
     }
 };

@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_promotions', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('promotion_id')->constrained('promotions');
+            $table->id('user_promotion_id');
+            $table->foreignId('user_id')->constrained('users')->references('user_id');
+            $table->foreignId('promotion_id')->constrained('promotions')->references('promotion_id');
             $table->timestamp('used_at')->nullable();
             $table->timestamps();
         });

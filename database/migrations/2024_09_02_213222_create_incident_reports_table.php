@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('incident_reports', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('venue_id')->constrained('venues');
-            $table->foreignId('user_id')->constrained('users');
+            $table->id('incident_id');
+            $table->foreignId('venue_id')->constrained('venues')->references('venue_id');
+            $table->foreignId('user_id')->constrained('users')->references('user_id');
             $table->text('description');
             $table->enum('status', ['resolved', 'pending']);
             $table->timestamps();

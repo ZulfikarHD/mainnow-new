@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('payments', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('booking_id')->constrained('bookings');
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('owner_id')->constrained('venue_owners');
+            $table->id('payment_id');
+            $table->foreignId('booking_id')->constrained('bookings')->references('booking_id');
+            $table->foreignId('user_id')->constrained('users')->references('user_id');
+            $table->foreignId('owner_id')->constrained('venue_owners')->references('owner_id');
             $table->decimal('amount', 8, 2);
             $table->date('payment_date');
             $table->string('payment_method');

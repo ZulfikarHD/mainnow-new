@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('event_participations', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('event_id')->constrained('events');
-            $table->foreignId('user_id')->constrained('users');
+            $table->id('participant_id');
+            $table->foreignId('event_id')->constrained('events')->references('event_id');
+            $table->foreignId('user_id')->constrained('users')->references('user_id');
             $table->enum('status', ['confirmed', 'canceled']);
             $table->timestamps();
         });

@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('analytics_reports', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('venue_id')->constrained('venues');
+            $table->id('report_id');
+            $table->foreignId('venue_id')->constrained('venues')->references('venue_id');
             $table->string('report_type');
             $table->timestamp('generated_at');
             $table->json('data');

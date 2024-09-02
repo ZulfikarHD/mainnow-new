@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('dynamic_pricing_rules', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('venue_id')->constrained('venues');
-            $table->foreignId('sport_id')->constrained('sports');
+            $table->id('pricing_rule_id');
+            $table->foreignId('venue_id')->constrained('venues')->references('venue_id');
+            $table->foreignId('sport_id')->constrained('sports')->references('sport_id');
             $table->date('start_date');
             $table->date('end_date');
             $table->time('start_time');

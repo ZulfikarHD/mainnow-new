@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('equipment_bookings', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('booking_id')->constrained('bookings');
-            $table->foreignId('equipment_id')->constrained('equipment');
+            $table->id('equipment_booking_id');
+            $table->foreignId('booking_id')->constrained('bookings')->references('booking_id');
+            $table->foreignId('equipment_id')->constrained('equipment')->references('equipment_id');
             $table->integer('quantity');
             $table->timestamps();
         });

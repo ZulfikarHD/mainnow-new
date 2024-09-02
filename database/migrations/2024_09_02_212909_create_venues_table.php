@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('venues', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('owner_id')->constrained('venue_owners');
+            $table->id('venue_id');
+            $table->foreignId('owner_id')->constrained('venue_owners')->references('owner_id');
             $table->string('name');
             $table->string('location');
             $table->text('description')->nullable();

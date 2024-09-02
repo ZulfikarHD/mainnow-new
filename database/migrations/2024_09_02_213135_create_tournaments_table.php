@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tournaments', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('event_id')->constrained('events');
+            $table->id('tournament_id');
+            $table->foreignId('event_id')->constrained('events')->references('event_id');
             $table->string('name');
             $table->text('description')->nullable();
             $table->date('start_date');

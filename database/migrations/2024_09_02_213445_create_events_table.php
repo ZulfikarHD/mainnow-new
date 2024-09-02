@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('venue_id')->constrained('venues');
-            $table->foreignId('owner_id')->constrained('venue_owners');
+            $table->id('event_id');
+            $table->foreignId('venue_id')->constrained('venues')->references('venue_id');
+            $table->foreignId('owner_id')->constrained('venue_owners')->references('owner_id');
             $table->string('name');
             $table->text('description')->nullable();
             $table->date('event_date');
