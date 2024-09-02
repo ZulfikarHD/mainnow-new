@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('event_package_items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('package_id')->constrained('event_packages');
+            $table->enum('item_type', ['venue_rental', 'equipment', 'instructor', 'catering']);
+            $table->unsignedBigInteger('item_reference_id');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

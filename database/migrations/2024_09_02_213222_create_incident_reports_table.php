@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('incident_reports', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('venue_id')->constrained('venues');
+            $table->foreignId('user_id')->constrained('users');
+            $table->text('description');
+            $table->enum('status', ['resolved', 'pending']);
             $table->timestamps();
         });
     }

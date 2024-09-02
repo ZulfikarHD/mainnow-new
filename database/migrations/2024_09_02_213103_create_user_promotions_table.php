@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('user_promotions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('promotion_id')->constrained('promotions');
+            $table->timestamp('used_at')->nullable();
             $table->timestamps();
         });
     }

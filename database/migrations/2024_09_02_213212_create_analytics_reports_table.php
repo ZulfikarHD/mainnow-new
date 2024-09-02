@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('analytics_reports', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('venue_id')->constrained('venues');
+            $table->string('report_type');
+            $table->timestamp('generated_at');
+            $table->json('data');
             $table->timestamps();
         });
     }

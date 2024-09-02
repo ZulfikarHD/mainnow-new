@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('instructor_bookings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('booking_id')->constrained('bookings');
+            $table->foreignId('instructor_id')->constrained('instructors');
+            $table->foreignId('user_id')->constrained('users');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->decimal('total_fee', 8, 2);
+            $table->enum('status', ['confirmed', 'canceled']);
             $table->timestamps();
         });
     }

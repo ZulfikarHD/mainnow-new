@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('equipment_bookings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('booking_id')->constrained('bookings');
+            $table->foreignId('equipment_id')->constrained('equipment');
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

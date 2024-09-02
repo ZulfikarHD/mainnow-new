@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('user_teams', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('team_id')->constrained('teams');
+            $table->enum('role', ['captain', 'player']);
             $table->timestamps();
         });
     }

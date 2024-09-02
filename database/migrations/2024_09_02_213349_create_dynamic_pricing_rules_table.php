@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('dynamic_pricing_rules', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('venue_id')->constrained('venues');
+            $table->foreignId('sport_id')->constrained('sports');
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->decimal('price_modifier', 8, 2);
+            $table->boolean('is_recurring')->default(false);
+            $table->string('recurrence_pattern')->nullable();
             $table->timestamps();
         });
     }

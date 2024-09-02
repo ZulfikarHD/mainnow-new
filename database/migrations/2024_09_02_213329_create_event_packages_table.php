@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('event_packages', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('owner_id')->constrained('venue_owners');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->decimal('base_price', 8, 2);
             $table->timestamps();
         });
     }

@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('matches', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('tournament_id')->constrained('tournaments');
+            $table->foreignId('team_a_id')->constrained('teams');
+            $table->foreignId('team_b_id')->constrained('teams');
+            $table->date('match_date');
+            $table->integer('score_team_a')->nullable();
+            $table->integer('score_team_b')->nullable();
+            $table->enum('status', ['scheduled', 'completed']);
             $table->timestamps();
         });
     }

@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('venue_id')->constrained('venues');
+            $table->foreignId('owner_id')->constrained('venue_owners');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->date('event_date');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->integer('max_participants');
+            $table->decimal('fee', 8, 2);
             $table->timestamps();
         });
     }

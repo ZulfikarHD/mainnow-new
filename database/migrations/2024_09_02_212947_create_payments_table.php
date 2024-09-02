@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('booking_id')->constrained('bookings');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('owner_id')->constrained('venue_owners');
+            $table->decimal('amount', 8, 2);
+            $table->date('payment_date');
+            $table->string('payment_method');
+            $table->enum('status', ['completed', 'pending']);
             $table->timestamps();
         });
     }

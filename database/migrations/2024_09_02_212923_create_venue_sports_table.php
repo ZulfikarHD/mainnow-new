@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('venue_sports', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('venue_id')->constrained('venues');
+            $table->foreignId('sport_id')->constrained('sports');
+            $table->decimal('price_per_hour', 8, 2);
+            $table->enum('availability', ['daily', 'weekends']);
             $table->timestamps();
         });
     }

@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('venue_owners', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('phone_number')->nullable();
+            $table->string('profile_picture')->nullable();
+            $table->string('business_name');
             $table->timestamps();
         });
     }

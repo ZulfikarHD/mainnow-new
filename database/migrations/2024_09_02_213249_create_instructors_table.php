@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('instructors', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('phone_number')->nullable();
+            $table->string('profile_picture')->nullable();
+            $table->text('bio')->nullable();
+            $table->json('certifications')->nullable();
+            $table->string('specialization');
+            $table->string('availability')->nullable();
+            $table->decimal('rate_per_hour', 8, 2);
             $table->timestamps();
         });
     }

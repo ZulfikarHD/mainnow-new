@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('event_participations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('event_id')->constrained('events');
+            $table->foreignId('user_id')->constrained('users');
+            $table->enum('status', ['confirmed', 'canceled']);
             $table->timestamps();
         });
     }
